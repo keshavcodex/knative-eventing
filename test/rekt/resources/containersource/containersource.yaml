@@ -43,13 +43,13 @@ spec:
     metadata:
       annotations:
         {{ range $key, $value := .podannotations }}
-        {{ $key }}: {{ $value }}
+        {{ $key }}: "{{ $value }}"
         {{ end }}
     {{ end }}
     spec:
       containers:
       - name: heartbeats
-        image: ko://knative.dev/eventing/test/test_images/heartbeats
+        image: ko://knative.dev/eventing/cmd/heartbeats
         imagePullPolicy: IfNotPresent
         args:
         - {{ .args }}
